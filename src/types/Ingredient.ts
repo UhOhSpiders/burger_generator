@@ -3,4 +3,6 @@ export type Ingredient = {
     vegan: boolean;
     vegetarian: boolean;
     category: string;
+    octave: number | undefined;
+    note: string | undefined;
 }
