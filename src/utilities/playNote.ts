@@ -1,10 +1,13 @@
 import * as Tone from 'tone'
+import { Burger } from '../types/Burger'
 
-const synth = new Tone.Synth().toDestination();
 
-export function playNote(ingredient){
-    // const pentatonic: String[] = ["C#","D#","F#","G#","A#"]
-    // const noteIndex = Math.floor(Math.random() * pentatonic.length)
+const synth = new Tone.Synth()
+const pitch = new Tone.PitchShift()
+export function playNote(ingredient, burger) {
+    pitch.pitch = burger.pitch
+    synth.connect(pitch)
+    pitch.toDestination()
     synth.triggerAttackRelease(`${ingredient.note}${ingredient.octave}`, "16n");
 }
 

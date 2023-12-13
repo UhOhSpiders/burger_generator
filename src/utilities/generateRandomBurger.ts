@@ -28,6 +28,7 @@ export function generateRandomBurger(vegan: boolean, vegetarian: boolean): Burge
       topping: filteredToppings[toppingIndex],
       sauce: filteredSauces[sauceIndex],
       patty: filteredPattys[pattyIndex],
+      pitch: 0
     };
     return randomBurger;
   }

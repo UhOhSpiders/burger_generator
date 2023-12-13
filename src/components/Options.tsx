@@ -1,7 +1,7 @@
 import React from "react";
 import { Burger } from "../types/Burger";
 import { Ingredient } from "../types/Ingredient";
-import Button from "./Button";
+import Button from "./OptionButton";
 
 type OptionsProps = {
   ingredients: Ingredient[];
@@ -21,8 +21,8 @@ const Options = ({
   vegetarian
 }: OptionsProps) => {
   
-const optionsInput = ingredients.map((ingredient) => {
-  return(<Button ingredient={ingredient} preview={preview} updatePreview={updatePreview} vegan={vegan} vegetarian={vegetarian}/>)
+const optionsInput = ingredients.map((ingredient, index) => {
+  return(<Button key={index} ingredient={ingredient} preview={preview} updatePreview={updatePreview} vegan={vegan} vegetarian={vegetarian}/>)
 })
 
   return (

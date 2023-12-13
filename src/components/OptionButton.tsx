@@ -12,7 +12,7 @@ type ButtonProps = {
     vegetarian: boolean
 }
 
-const Button = ({
+const OptionButton = ({
     ingredient,
     preview,
     updatePreview,
@@ -53,4 +53,4 @@ const Button = ({
       );
 }
 
-export default Button
+export default OptionButton

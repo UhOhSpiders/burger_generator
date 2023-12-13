@@ -5,4 +5,5 @@ export type Ingredient = {
     category: string;
     octave: number | undefined;
     note: string | undefined;
+    pitch: number | undefined;
 }

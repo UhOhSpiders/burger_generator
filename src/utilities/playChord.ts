@@ -1,22 +1,26 @@
 import * as Tone from 'tone'
 import { Burger } from '../types/Burger';
 
-const synth = new Tone.PolySynth(Tone.Synth)
-const reverb = new Tone.Reverb(5)
-synth.connect(reverb)
-reverb.toDestination()
-export function playChord(preview:Burger){
-    if(preview){
-    const now = Tone.now()
-    console.log(`${preview?.bun.note}${preview?.bun.octave}`)
-    let chord = [`${preview?.bun.note}${preview?.bun.octave}`,`${preview?.sauce.note}${preview?.sauce.octave}`,`${preview?.topping.note}${preview?.topping.octave}`,`${preview?.patty.note}${preview?.patty.octave}`]
-    synth.triggerAttack(`${preview?.bun.note}${preview?.bun.octave}`, now);
-    synth.triggerAttack(`${preview?.topping.note}${preview?.topping.octave}`, now + 0.2);
-    synth.triggerAttack(`${preview?.sauce.note}${preview?.sauce.octave}`, now + 0.4);
-    synth.triggerAttack(`${preview?.patty.note}${preview?.patty.octave}`, now + 0.6);
 
-    synth.triggerRelease(chord, now + 0.7);
-    }else{
+const synth = new Tone.PolySynth(Tone.Synth)
+const pitch = new Tone.PitchShift()
+const reverb = new Tone.Reverb(5)
+export function playChord(burger: Burger) {
+    if(burger){
+    pitch.pitch = burger?.pitch
+    }
+    synth.connect(pitch)
+    pitch.connect(reverb)
+    reverb.toDestination()
+    if (burger) {
+        const now = Tone.now()
+        let chord = [`${burger?.bun.note}${burger?.bun.octave}`, `${burger?.topping.note}${burger?.topping.octave}`, `${burger?.sauce.note}${burger?.sauce.octave}`, `${burger?.patty.note}${burger?.patty.octave}`]
+        synth.triggerAttack(`${chord[0]}`, now);
+        synth.triggerAttack(`${chord[1]}`, now + 0.2);
+        synth.triggerAttack(`${chord[2]}`, now + 0.4);
+        synth.triggerAttack(`${chord[3]}`, now + 0.6);
+        synth.triggerRelease(chord, now + 0.7);
+    } else {
         console.log("no burger today")
     }
 }

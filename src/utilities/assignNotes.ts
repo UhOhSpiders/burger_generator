@@ -2,10 +2,16 @@ import { Ingredient } from "../types/Ingredient";
 
 export function assignNotes(ingredients: Ingredient[]){
     const scale: string[] = ["C#","D#","F#","G#","A#"]
-    
+    // const scale: string[] = ["D","E","F#","G#","A#", "C", "D"]
+    // const scale: string[] = ["C","D","E","F","G","A","B"]
+    let noteIndex = 0
     let result = ingredients.forEach((ingredient) => {
-        const noteIndex = Math.floor(Math.random() * scale.length)
+        ingredient.pitch = 0
         ingredient.note = scale[noteIndex]
+        noteIndex++
+        if(noteIndex === scale.length){
+            noteIndex=0
+        }
       switch(ingredient.category){
         case "bun":
             console.log("bun")
@@ -21,7 +27,7 @@ export function assignNotes(ingredients: Ingredient[]){
             break;
         case "patty":
             console.log("patty")
-            ingredient.octave = 7
+            ingredient.octave = 6
             break;
         default:
             console.log(ingredient.name)

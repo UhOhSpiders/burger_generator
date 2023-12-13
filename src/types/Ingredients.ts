@@ -29,88 +29,95 @@ const mushrooms: Ingredient = {
 }
 
 const lettuce: Ingredient = {
-    name: "Lettuce",
+    name: "lettuce",
     vegan: true,
     vegetarian: true,
     category: "topping"
   };
   
   const tomato: Ingredient = {
-    name: "Tomato",
+    name: "tomato",
     vegan: true,
     vegetarian: true,
     category: "topping"
   };
   
   const cheese: Ingredient = {
-    name: "Cheese",
+    name: "cheese",
     vegan: false,
     vegetarian: true,
     category: "topping"
   };
 
   const bacon: Ingredient = {
-    name: "Bacon",
+    name: "bacon",
     vegan: false,
     vegetarian: false,
     category: "topping"
   };
 
   const ketchup: Ingredient = {
-    name: "Ketchup",
+    name: "ketchup",
     category: "sauce",
     vegan: true,
     vegetarian: true,
   };
   
   const mustard: Ingredient = {
-    name: "Mustard",
+    name: "mustard",
     category: "sauce",
     vegan: true,
     vegetarian: false,
   };
   
   const mayo: Ingredient = {
-    name: "Mayonnaise",
+    name: "mayonnaise",
     category: "sauce",
     vegan: false,
     vegetarian: true,
   };
   
   const BBQ: Ingredient = {
-    name: "BBQ Sauce",
+    name: "BBQ",
     category: "sauce",
     vegan: false,
     vegetarian: false,
   };
   
   const hotSauce: Ingredient = {
-    name: "Hot Sauce",
+    name: "hot-sauce",
     category: "sauce",
     vegan: true,
     vegetarian: true,
   };
 
   const beef: Ingredient = {
-    name: "Beef Patty",
+    name: "beef",
     category: "patty",
     vegan: false,
     vegetarian: false,
   };
   
   const chicken: Ingredient = {
-    name: "Chicken Patty",
+    name: "chicken",
     category: "patty",
     vegan: false,
     vegetarian: false,
   };
   
   const tofu: Ingredient = {
-    name: "Tofu Patty",
+    name: "tofu",
     category: "patty",
     vegan: true,
     vegetarian: true,
   };
+  const squareSausage: Ingredient = {
+    name: "square-sausage",
+    category: "patty",
+    vegan: false,
+    vegetarian: false,
+  };
+
 
 
 export const allBuns = [brioch, wholeWheat, classic];
@@ -119,4 +126,4 @@ export const allToppings = [mushrooms, bacon, lettuce, cheese, tomato];
 
 export const allSauces = [ketchup, mustard, mayo, BBQ, hotSauce];
 
-export const allPattys = [beef, chicken, tofu];
+export const allPattys = [beef, chicken, tofu, squareSausage];
