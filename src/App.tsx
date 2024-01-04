@@ -14,6 +14,7 @@ import { playNote } from "./utilities/playNote";
 import { playChord } from "./utilities/playChord";
 import { assignNotes } from "./utilities/assignNotes";
 import Gallery from "./components/Gallery";
+import SettingsButton from "./components/SettingsButton";
 
 function App() {
   const [preview, setPreview] = useState<Burger>();
@@ -113,18 +114,15 @@ if(!preview){
 
         </div>
           <div className="bg-purple-200 p-2 rounded row-start-2">
-          <button
-            className="p-2 m-1 bg-red-400 rounded-lg"
-            onClick={randomisePreviewBurger}
-          >
-            RANDOMISE BURGER
-          </button>
-          <button className="p-2 m-1 bg-red-400 rounded-lg" onClick={saveBurger}>SAVE FOR LATER</button>
+          <SettingsButton onClick={randomisePreviewBurger} text={"RANDOM BURGER"}/>
           <p><input type="checkbox" onClick={()=>setVegan(!vegan)}/>    vegan</p>
           <p><input type="checkbox" onClick={()=>setVegetarian(!vegetarian)}/>    vegetarian</p>
-          <button onClick={()=>incrementPitch()}>+</button>
-          <button onClick={()=>decrementPitch()}>-</button>
-          <button onClick={()=>resetPitch()}>reset</button>
+          <SettingsButton onClick={() => 
+            saveBurger() 
+          } text={"Save Burger"}  />
+          <SettingsButton onClick={()=>resetPitch()} text={"reset pitch"} />
+          <SettingsButton onClick={()=>incrementPitch()} text={"+"} />
+          <SettingsButton onClick={()=>decrementPitch()} text={"-"} />
           </div>
         <Preview preview={preview} playChord={playChord}/>
         <Gallery saved={saved}/>

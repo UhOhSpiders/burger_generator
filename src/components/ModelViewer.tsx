@@ -12,7 +12,7 @@ const ModelViewer = ({ modelPaths, scale }:ModelViewerProps) => {
   
   return (
     <Canvas>
-      <ambientLight intensity={0.7} />
+      <ambientLight intensity={1.2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={0.1} />
       <pointLight position={[-10, -10, -10]} />
       <Suspense fallback={null}>

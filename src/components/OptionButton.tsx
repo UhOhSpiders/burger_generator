@@ -2,7 +2,7 @@ import React from 'react'
 import { Ingredient } from '../types/Ingredient'
 import { Burger } from '../types/Burger';
 
-type ButtonProps = {
+type OptionButtonProps = {
     ingredient: Ingredient;
     preview: Burger;
     updatePreview: (
@@ -18,7 +18,7 @@ const OptionButton = ({
     updatePreview,
     vegan,
     vegetarian
-}: ButtonProps) => {
+}: OptionButtonProps) => {
     let buttonStyles = "m-2 p-1 rounded-md";
      if(vegan && !ingredient.vegan || vegetarian && !ingredient.vegetarian){
         return(
