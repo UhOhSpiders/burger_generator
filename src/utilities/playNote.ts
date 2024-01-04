@@ -1,10 +1,11 @@
 import * as Tone from 'tone'
 import { Burger } from '../types/Burger'
+import { Ingredient } from '../types/Ingredient'
 
 
 const synth = new Tone.Synth()
 const pitch = new Tone.PitchShift()
-export function playNote(ingredient, burger) {
+export function playNote(ingredient: Ingredient, burger: Burger) {
     pitch.pitch = burger.pitch
     synth.connect(pitch)
     pitch.toDestination()

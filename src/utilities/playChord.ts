@@ -1,13 +1,12 @@
 import * as Tone from 'tone'
 import { Burger } from '../types/Burger';
 
-
 const synth = new Tone.PolySynth(Tone.Synth)
 const pitch = new Tone.PitchShift()
 const reverb = new Tone.Reverb(5)
 export function playChord(burger: Burger) {
     if(burger){
-    pitch.pitch = burger?.pitch
+    pitch.pitch = burger.pitch
     }
     synth.connect(pitch)
     pitch.connect(reverb)
