@@ -13,14 +13,12 @@ import { Ingredient } from "./types/Ingredient";
 import { playNote } from "./utilities/playNote";
 import { playChord } from "./utilities/playChord";
 import { assignNotes } from "./utilities/assignNotes";
-import Gallery from "./components/Gallery";
 import SettingsButton from "./components/SettingsButton";
 
 function App() {
   const [preview, setPreview] = useState<Burger>();
   const [vegetarian, setVegetarian] = useState(false);
   const [vegan, setVegan] = useState(false);
-  const [saved, setSaved] = useState<Burger[]>([])
   const pitchShiftInterval = 2
 
   useEffect(() => {
@@ -67,22 +65,24 @@ function App() {
     setPreview(previewCopy);
   }
 
-  const saveBurger = () => {
-    let savedCopy = [...saved]
-    let previewCopy: any = {...preview}
-    savedCopy.push(previewCopy)
-    setSaved(savedCopy)
-    setPreview(previewCopy)
-  }
-
 if(!preview){
   return <p>Loading...</p>
 }
   return (
     <>
-      <h1 className="text-3xl text-center pt-2">MUSICAL BURGERS DOT COM</h1>
-      <div className="grid grid-cols-4 grid-rows-2 auto-cols-auto m-2">
+  
+      <div className="grid grid-cols-4 auto-cols-auto m-2">
         <div>
+        <div className="bg-purple-200 p-2 rounded row-start-2 m-1">
+      <h1 className="text-3xl pt-2">MUSICAL BURGERS</h1>
+          <SettingsButton onClick={randomisePreviewBurger} text={"RANDOMISE BURGER"}/>
+          <p><input type="checkbox" onClick={()=>setVegan(!vegan)}/>    vegan</p>
+          <p><input type="checkbox" onClick={()=>setVegetarian(!vegetarian)}/>    vegetarian</p>
+          <div className="flex items-center"><p>Increment Pitch: </p>
+          <SettingsButton onClick={()=>incrementPitch()} text={"+"} />
+          <SettingsButton onClick={()=>decrementPitch()} text={"-"} /></div>
+          <SettingsButton onClick={()=>resetPitch()} text={"reset pitch"} />
+          </div>
           <Options
             ingredients={allBuns}
             updatePreview={updatePreview}
@@ -113,19 +113,10 @@ if(!preview){
           />
 
         </div>
-          <div className="bg-purple-200 p-2 rounded row-start-2">
-          <SettingsButton onClick={randomisePreviewBurger} text={"RANDOM BURGER"}/>
-          <p><input type="checkbox" onClick={()=>setVegan(!vegan)}/>    vegan</p>
-          <p><input type="checkbox" onClick={()=>setVegetarian(!vegetarian)}/>    vegetarian</p>
-          <SettingsButton onClick={() => 
-            saveBurger() 
-          } text={"Save Burger"}  />
-          <SettingsButton onClick={()=>resetPitch()} text={"reset pitch"} />
-          <SettingsButton onClick={()=>incrementPitch()} text={"+"} />
-          <SettingsButton onClick={()=>decrementPitch()} text={"-"} />
-          </div>
-        <Preview preview={preview} playChord={playChord}/>
-        <Gallery saved={saved}/>
+          
+        <div className="col-span-3 bg-gradient-to-t from-yellow-200 to-white-200 m-2  outline-gray-500 outline-3 rounded" onClick={()=>playChord(preview)}>
+        <Preview preview={preview}/>
+        </div>
       </div>
     </>
   );

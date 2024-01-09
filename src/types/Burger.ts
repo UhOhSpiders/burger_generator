@@ -5,4 +5,5 @@ export type Burger = {
   topping: (typeof allToppings)[number];
   sauce: (typeof allSauces)[number];
   patty: (typeof allPattys)[number];
+  pitch: number
 } | undefined;

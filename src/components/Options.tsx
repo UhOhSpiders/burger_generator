@@ -1,4 +1,3 @@
-import React from "react";
 import { Burger } from "../types/Burger";
 import { Ingredient } from "../types/Ingredient";
 import Button from "./OptionButton";
@@ -26,7 +25,7 @@ const optionsInput = ingredients.map((ingredient, index) => {
 })
 
   return (
-    <div className="bg-yellow-200 mb-2 p-4 rounded">
+    <div className="bg-yellow-200 m-1 p-2 rounded">
       <h2 className="text-3xl font-bold underline">
         {ingredients[0].category}
       </h2>
